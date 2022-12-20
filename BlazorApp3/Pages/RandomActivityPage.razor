@@ -1,0 +1,11 @@
+﻿@page "/todo"
+@using Data
+@inject BoredActivityService boredActivityService
+
+<h3>RandomActivityPage</h3>
+<p>@(boredActivity.activity).toString()</p>
+
+@code {
+    private BoredActivity? boredActivity;
+    protected override async Task<BoredActivity> OnInitializedAsync() => boredActivity = await boredActivityService.GetRandomActivityAsync();
+}
